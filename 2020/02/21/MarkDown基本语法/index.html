@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/gallery/thumbnails/white-and-brown-house-3511104.jpg">
 <meta property="article:published_time" content="2020-02-21T13:39:51.000Z">
-<meta property="article:modified_time" content="2020-02-27T12:52:41.488Z">
+<meta property="article:modified_time" content="2020-02-28T02:42:48.057Z">
 <meta property="article:author" content="xuboya">
 <meta property="article:tag" content="Markdown">
 <meta property="article:tag" content="Hexo">
@@ -70,7 +70,7 @@
     <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
     
-    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="MarkDown基本语法" height="28">
+                <img src="/images/logo3.svg" alt="MarkDown基本语法" height="28">
             
             </a>
         </div>
@@ -91,19 +91,19 @@
             <div class="navbar-start">
                 
                 <a class="navbar-item"
-                href="/">Home</a>
+                href="/">主页</a>
                 
                 <a class="navbar-item"
-                href="/archives">Archives</a>
+                href="/archives">时光轴</a>
                 
                 <a class="navbar-item"
-                href="/categories">Categories</a>
+                href="/categories">分类</a>
                 
                 <a class="navbar-item"
-                href="/tags">Tags</a>
+                href="/tags">标签</a>
                 
                 <a class="navbar-item"
-                href="/about">About</a>
+                href="/about">关于我</a>
                 
             </div>
             
@@ -117,6 +117,10 @@
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -157,6 +161,11 @@
                     1 分钟 读完 (大约 210 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
@@ -272,6 +281,16 @@
         <div class="buttons is-centered">
             
                 
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
 <a class="button is-success donate">
     <span class="icon is-small">
         <i class="fab fa-weixin"></i>
@@ -375,7 +394,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -399,7 +418,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -456,6 +475,62 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#标题-amp-字体">
+        <span class="has-mr-6">1</span>
+        <span>标题&字体</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#标题">
+        <span class="has-mr-6">1.1</span>
+        <span>标题</span>
+        </a></li><li>
+        <a class="is-flex" href="#字体">
+        <span class="has-mr-6">1.2</span>
+        <span>字体</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#🌟-New-Features">
+        <span class="has-mr-6">1.2.1</span>
+        <span>🌟 New Features</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#列表">
+        <span class="has-mr-6">2</span>
+        <span>列表</span>
+        </a></li><li>
+        <a class="is-flex" href="#代码">
+        <span class="has-mr-6">3</span>
+        <span>代码</span>
+        </a></li><li>
+        <a class="is-flex" href="#超链接">
+        <span class="has-mr-6">4</span>
+        <span>超链接</span>
+        </a></li><li>
+        <a class="is-flex" href="#图片">
+        <span class="has-mr-6">5</span>
+        <span>图片</span>
+        </a></li><li>
+        <a class="is-flex" href="#表格">
+        <span class="has-mr-6">6</span>
+        <span>表格</span>
+        </a></li><li>
+        <a class="is-flex" href="#公式">
+        <span class="has-mr-6">7</span>
+        <span>公式</span>
+        </a></li><li>
+        <a class="is-flex" href="#文件下载">
+        <span class="has-mr-6">8</span>
+        <span>文件下载</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -479,7 +554,7 @@
             <li>
                 <a class="level is-mobile" href="https://zjudeveloper.gitbook.io/-2/" target="_blank" rel="noopener">
                     <span class="level-left">
-                        <span class="level-item">振动台</span>
+                        <span class="level-item">地震模拟振动台</span>
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">zjudeveloper.gitbook.io</span>
@@ -507,7 +582,7 @@
                 <span class="level-item">个人网站</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/Hexo/">
@@ -515,7 +590,7 @@
                 <span class="level-item">Hexo</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/%E8%AF%AD%E8%A8%80/">
@@ -550,6 +625,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/27/Hexo%E4%B8%BB%E4%BD%93Icarus%E9%85%8D%E7%BD%AE/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/black-bicycle-parked-beside-white-wooden-chair-3639542.jpg" alt="Hexo主体Icarus配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-27T14:52:24.000Z">2020-02-27</time></div>
+                    <a href="/2020/02/27/Hexo%E4%B8%BB%E4%BD%93Icarus%E9%85%8D%E7%BD%AE/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo主体Icarus配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a> / <a class="has-link-grey -link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/Hexo/">Hexo</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/27/hello-world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/thumbnails/Hello_World.jpg" alt="Hello World">
@@ -622,7 +716,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -643,7 +737,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Hexo/">
                         <span class="tag">Hexo</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Icarus/">
+                        <span class="tag">Icarus</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -671,7 +772,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">个人博客</a>
+        <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Icarus/" style="font-size: 10px;">Icarus</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">个人博客</a>
     </div>
 </div>
         
@@ -694,6 +795,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/27/Hexo%E4%B8%BB%E4%BD%93Icarus%E9%85%8D%E7%BD%AE/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/black-bicycle-parked-beside-white-wooden-chair-3639542.jpg" alt="Hexo主体Icarus配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-27T14:52:24.000Z">2020-02-27</time></div>
+                    <a href="/2020/02/27/Hexo%E4%B8%BB%E4%BD%93Icarus%E9%85%8D%E7%BD%AE/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hexo主体Icarus配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a> / <a class="has-link-grey -link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/Hexo/">Hexo</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/27/hello-world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/gallery/thumbnails/Hello_World.jpg" alt="Hello World">
@@ -766,7 +886,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -787,7 +907,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Hexo/">
                         <span class="tag">Hexo</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Icarus/">
+                        <span class="tag">Icarus</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -815,7 +942,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">个人博客</a>
+        <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Icarus/" style="font-size: 10px;">Icarus</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">个人博客</a>
     </div>
 </div>
     
@@ -831,14 +958,29 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="MarkDown基本语法" height="28">
+                    <img src="/images/logo3.svg" alt="MarkDown基本语法" height="28">
                 
                 </a>
                 <p class="is-size-7">
                 &copy; 2020 xuboya&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+
                 
+                
+
+                
+                <br>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+                </script>
+                
+                <span id="busuanzi_container_site_pv">
+                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                </span>
+                <span id="busuanzi_container_site_uv">
+                    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+                </span>
+
                 </p>
             </div>
             <div class="level-end">
