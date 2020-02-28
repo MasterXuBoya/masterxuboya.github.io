@@ -532,3 +532,7 @@ figure.highlight .section {
 .gist .file {
   all: initial;
 }
+.item_headline {
+  text-align: left;
+  color: #1e90ff;
+}
