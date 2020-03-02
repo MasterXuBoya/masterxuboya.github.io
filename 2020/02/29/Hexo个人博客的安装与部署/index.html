@@ -10,16 +10,16 @@
 <title>Hexo个人博客的安装与部署 - MasterXu&#39;s Wiki Blog</title>
 
 
-    <meta name="description" content="摘要：   Hexo 安装（本地）基本配置环境 Git 安装 Node.js安装 Hexo安装12$ npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org #切换淘宝镜像$ cnpm install hexo-cli -g #安装hexo">
+    <meta name="description" content="摘要：本文主要介绍Hexo博客的安装和部署流程，安装章节包括依赖环境的install和Hexo的基本命令;部署章节包括GitHub和vps的部署。此外还介绍服务器和域名的购买流程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo个人博客的安装与部署">
 <meta property="og:url" content="http://yoursite.com/2020/02/29/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="MasterXu&#39;s Wiki Blog">
-<meta property="og:description" content="摘要：   Hexo 安装（本地）基本配置环境 Git 安装 Node.js安装 Hexo安装12$ npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org #切换淘宝镜像$ cnpm install hexo-cli -g #安装hexo">
+<meta property="og:description" content="摘要：本文主要介绍Hexo博客的安装和部署流程，安装章节包括依赖环境的install和Hexo的基本命令;部署章节包括GitHub和vps的部署。此外还介绍服务器和域名的购买流程。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/gallery/thumbnails/A%20Sunday%20on%20La%20Grande%20Jatte.jpg">
 <meta property="article:published_time" content="2020-02-29T03:01:13.000Z">
-<meta property="article:modified_time" content="2020-03-02T08:43:52.762Z">
+<meta property="article:modified_time" content="2020-03-02T14:47:30.292Z">
 <meta property="article:author" content="xuboya">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="VPS">
@@ -172,7 +172,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2442 个字)
+                    18 分钟 读完 (大约 2737 个字)
                 </span>
                 
                 
@@ -196,14 +196,14 @@
         </h1>
         <div class="content">
             <blockquote>
-<p>摘要：</p>
+<p>摘要：本文主要介绍Hexo博客的安装和部署流程，<code>安装</code>章节包括依赖环境的install和Hexo的基本命令;<code>部署</code>章节包括GitHub和vps的部署。此外还介绍服务器和域名的购买流程。</p>
 </blockquote>
+<a id="more"></a>
 <hr>
 <h1 id="Hexo-安装（本地）"><a href="#Hexo-安装（本地）" class="headerlink" title="Hexo 安装（本地）"></a>Hexo 安装（本地）</h1><h2 id="基本配置环境"><a href="#基本配置环境" class="headerlink" title="基本配置环境"></a>基本配置环境</h2><ul>
 <li>Git 安装</li>
 <li>Node.js安装</li>
 <li>Hexo安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org <span class="comment">#切换淘宝镜像</span></span><br><span class="line">$ cnpm install hexo-cli -g <span class="comment">#安装hexo</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 
 </li>
 </ul>
@@ -261,7 +261,13 @@
 <li>ICP备案<br>备案和实名认证是两个东西(之前一直认为是一个东西……)，备案的话首先需要用户提交材料，上传到腾讯云审核，然后上传国家相关机构审核。这个就和申请专利类似，腾讯其实是一个代理的作用，如果个体提交的信息有误，腾讯云的客服会帮助个体进行相关信息的修改，以达到快速实现域名的备案。一般实名认证3天后可以开始申请域名备案(个人信息上传到国家系统有延迟)，个体提交备案材料1天后腾讯云即审核通过，如果没有问题的话，一周之内国家也会审核通过的。</li>
 <li>公安备案<br>ICP备案成功后访问域名即可以解析到对应的ip地址，最后还需要公安部备案。</li>
 </ul>
-<h2 id="🌟远程部署"><a href="#🌟远程部署" class="headerlink" title="🌟远程部署"></a>🌟远程部署</h2><p>通常我们把文件上传到GitHub上，默认的repository存储在GitHub提供的免费服务器上。利用SSH协议，我们可以在自建VPS服务器上自建git仓库，实现代码的自动部署。Hexo个人博客的远程部署原理如下图所示，本地Markdown文件经过渲染后生成html静态文件(一般无数据库后端)，传统的发布到GitHub，本质就是将这些html文件传输到GitHub的远程仓库xxx.github.io。远程部署需要在vps服务器创建git仓库(git bare仓库)，然后利用git-hooks工具自动将git仓库中的代码拷贝到网站的根目录;client访问Hexo博客时通过nginx服务器监听80端口，展示网站根目录的index.html，从而开启网站浏览。<br><img src="/2020/02/29/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/vps%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="vps部署原理图"><br>    经过本地发布(localhost:4000)和Github发布(xxx.github.io)成功后，将Hexo博客部署到腾讯云VPS上，具体步骤如下：</p>
+<h2 id="🌟远程部署"><a href="#🌟远程部署" class="headerlink" title="🌟远程部署"></a>🌟远程部署</h2><blockquote>
+<p>通常我们把文件上传到GitHub上，默认的repository存储在GitHub提供的免费服务器上。利用SSH协议，我们可以在自建VPS服务器上自建git仓库，实现代码的自动部署。</p>
+</blockquote>
+<p>有三种方法可以实现服务器端的部署<br>方法一：在服务器端重新实现一遍本地部署的方法，安装git、nodejs、hexo</p>
+<p>方法二：本地部署到GitHub，然后再服务器端<code>git clone</code>或者<code>git pull</code></p>
+<p>方法三：在服务器端自建repository，本地与服务器端通过SSH直接通信</p>
+<p>Hexo个人博客的远程部署原理如下图所示，本地Markdown文件经过渲染后生成html静态文件(一般无数据库后端)，传统的发布到GitHub，本质就是将这些html文件传输到GitHub的远程仓库xxx.github.io。远程部署需要在vps服务器创建git仓库(git bare仓库)，然后利用git-hooks工具自动将git仓库中的代码拷贝到网站的根目录;client访问Hexo博客时通过nginx服务器监听80端口，展示网站根目录的index.html，从而开启网站浏览。<br><img src="/2020/02/29/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%83%A8%E7%BD%B2/vps%E9%83%A8%E7%BD%B2%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="vps部署原理图"><br>    经过本地发布(localhost:4000)和Github发布(xxx.github.io)成功后，将Hexo博客部署到腾讯云VPS上，具体步骤如下：</p>
 <ol>
 <li>安装git并配置SSH<blockquote>
 <p>Tips：安装Git、新建git用户、SSH免密</p>
@@ -337,7 +343,13 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h1><p><a href="https://blog.csdn.net/jiachunchun/article/details/90235492">https://blog.csdn.net/jiachunchun/article/details/90235492</a><br><a href="https://blog.csdn.net/weixin_34413802/article/details/88986540">https://blog.csdn.net/weixin_34413802/article/details/88986540</a></p>
+<h2 id="服务器端常见命令"><a href="#服务器端常见命令" class="headerlink" title="服务器端常见命令"></a>服务器端常见命令</h2><p>网站根目录：/home/git/blog/hexo<br>git仓库：/home/git/blog/hexo.git</p>
+<p>查看端口进程：<code>netstat -ntlp</code><br>查看nginx进程：<code>ps -ef|grep nginx</code></p>
+<p>测试nginx.conf文件配置是否正确:<code>nginx -t</code></p>
+<blockquote>
+<p>查找到nginx对应的pid之后，可以重启nginx服务器，有以下两种方式：<br>重启nginx：<code>kill -HUP pid</code><br>重启nginx:<code>nginx -s reload</code></p>
+</blockquote>
+<h1 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h1><p><a href="https://blog.csdn.net/jiachunchun/article/details/90235492">https://blog.csdn.net/jiachunchun/article/details/90235492</a><br><a href="https://blog.csdn.net/weixin_34413802/article/details/88986540">https://blog.csdn.net/weixin_34413802/article/details/88986540</a><br><a href="https://aotu.io/notes/2017/04/10/githooks/">用 Git 钩子进行简单自动部署</a><br><a href="https://blog.csdn.net/ttaohua/article/details/102984045">git钩子 hook post-receive</a></p>
 <hr>
 
         </div>
@@ -481,7 +493,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            4
+                            6
                         </p>
                     </a>
                 </div>
@@ -643,6 +655,10 @@
         <a class="is-flex" href="#🌟远程部署">
         <span class="has-mr-6">2.3</span>
         <span>🌟远程部署</span>
+        </a></li><li>
+        <a class="is-flex" href="#服务器端常见命令">
+        <span class="has-mr-6">2.4</span>
+        <span>服务器端常见命令</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#参考网址">
         <span class="has-mr-6">3</span>
