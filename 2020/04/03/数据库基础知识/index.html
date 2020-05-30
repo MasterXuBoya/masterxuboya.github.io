@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>数据库基础知识 - MasterXu&#39;s Wiki Blog</title>
+
+
+    <meta name="description" content="引言数据库基本概念数据库系统包括以下内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础知识">
+<meta property="og:url" content="http://yoursite.com/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="MasterXu&#39;s Wiki Blog">
+<meta property="og:description" content="引言数据库基本概念数据库系统包括以下内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/gallery/thumbnails/database.png">
+<meta property="article:published_time" content="2020-04-03T12:13:37.000Z">
+<meta property="article:modified_time" content="2020-05-08T14:04:21.351Z">
+<meta property="article:author" content="xuboya">
+<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/gallery/thumbnails/database.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon-32x32.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/An Old Hope.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+    
+        <script type="text/javascript" src="//js.users.51.la/20665577.js"></script>
+    
+
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo3.svg" alt="数据库基础知识" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/project">专题</a>
+                
+                <a class="navbar-item"
+                href="/schedule">计划</a>
+                
+                <a class="navbar-item"
+                href="/archives">时光轴</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/MasterXuBoya">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/database.png" alt="数据库基础知识">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-03T12:13:37.000Z">2020-04-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 小时 读完 (大约 9436 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                <span id="busuanzi_container_page_uv">
+                    <i class="far fa-user-circle"></i>
+                    共<span id="busuanzi_value_page_uv">0</span>个访客
+                </span>
+
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                数据库基础知识
+            
+        </h1>
+        <div class="content">
+            <hr>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="数据库基本概念"><a href="#数据库基本概念" class="headerlink" title="数据库基本概念"></a>数据库基本概念</h3><p>数据库系统包括以下内容</p>
+<a id="more"></a>
+
+<ul>
+<li>数据库—表：相互有关联的数据的集合</li>
+<li>数据库管理系统DBMS（MySQL、DB2、Oracle等）<ul>
+<li>从用户角度（用户使用角度）：<ul>
+<li>数据定义语言DDL</li>
+<li>数据操纵语言DML</li>
+<li>数据控制语言DCL</li>
+<li>嵌入式数据库语言(Java调用SQL)</li>
+</ul>
+</li>
+<li>从系统角度（系统实现角度）<ul>
+<li>语言编译器</li>
+<li>查询优化与实现</li>
+<li>存储与索引</li>
+<li>通信控制：分布式数据库</li>
+<li>事务机制</li>
+<li>故障恢复</li>
+<li>安全性控制</li>
+<li>完整性控制</li>
+<li>数据库性能分析</li>
+<li>各种控制程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据库应用程序：图书订阅系统、学生成绩管理系统等业务系统</li>
+<li>数据库管理员DBA</li>
+</ul>
+<h3 id="课程内容概览"><a href="#课程内容概览" class="headerlink" title="课程内容概览"></a>课程内容概览</h3><p>该MOOC课程主要分成以下四个部分：</p>
+<ul>
+<li>关系模型理论：基本的关系模型理论</li>
+<li>数据库语言SQL：介绍SQL的DDL和DML语言</li>
+<li>数据建模与数据库设计：介绍范式理论，数据建模方法，如何建表</li>
+<li>数据库管理系统的实现技术：介绍如何实现数据库管理系统</li>
+</ul>
+<h2 id="关系模型理论"><a href="#关系模型理论" class="headerlink" title="关系模型理论"></a>关系模型理论</h2><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="三级模式两层映像"><a href="#三级模式两层映像" class="headerlink" title="三级模式两层映像"></a>三级模式两层映像</h5><ol start="0">
+<li>三级模式</li>
+</ol>
+<ul>
+<li>External Level = User Level</li>
+</ul>
+<p>某一用户能够看到和处理的数据，全局数据中的某一部分</p>
+<ul>
+<li>Conceptual Level=Logic Level</li>
+</ul>
+<p>从全局角度理解/管理的数据，含有相应的约束</p>
+<ul>
+<li>Internal Level=Physical Level</li>
+</ul>
+<p>存储在介质上的数据，含存储路径、存储方式、索引方式等</p>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E4%B8%89%E5%B1%82%E6%A8%A1%E5%BC%8F%E4%B8%A4%E5%B1%82%E6%98%A0%E5%83%8F.png" alt="三级模式两层映像"></p>
+<ol>
+<li>两层映像</li>
+</ol>
+<ul>
+<li>E-C Mapping</li>
+</ul>
+<p>将外模式映射为概念模式，从而支持实现数据概念视图想外部视图的转换，便于用户观察和使用</p>
+<ul>
+<li>C-I Mapping</li>
+</ul>
+<p>将概念模式映射为内模式，从而实现数据概念视图想内部视图的转换，便于计算机进行存储和处理</p>
+<ol start="2">
+<li>两个独立性</li>
+</ol>
+<ul>
+<li>概念数据独立性</li>
+</ul>
+<p>当概念模式发生改变时，可以不改变外模式，只要改变(E-C Mapping)，从而无需改变应用程序</p>
+<ul>
+<li>物理数据独立性</li>
+</ul>
+<p>当内部模式发生变化时，可以不改变概念模式，只需改变C-I Mapping，从而不改变外部模式</p>
+<h5 id="三大经典数据模式"><a href="#三大经典数据模式" class="headerlink" title="三大经典数据模式"></a>三大经典数据模式</h5><ul>
+<li>关系模型(第二代数据库基本理论)</li>
+<li>层次模型（树结构）</li>
+<li>网状模型（图结构）</li>
+</ul>
+<h5 id="关系模型的三要素"><a href="#关系模型的三要素" class="headerlink" title="关系模型的三要素"></a>关系模型的三要素</h5><ul>
+<li>表的基本结构</li>
+</ul>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" alt="表的基本结构"></p>
+<blockquote>
+<p> 域:某一列的值域</p>
+<p>候选码：可以唯一表征一行的某个属性或组合属性</p>
+<p>主键：从候选码中选取一个作为主键，通常选单一列</p>
+<p>外码：A的某一个列（非主键）是B表的主键（Key）</p>
+</blockquote>
+<ul>
+<li><p>关系运算         <a href="#关系代数">内容跳转</a></p>
+</li>
+<li><p>完整性约束</p>
+<ul>
+<li><p>实体完整性：主键非空</p>
+</li>
+<li><p>参照完整性：外键必须在B表中存在</p>
+</li>
+<li><p>用户自定义完整性：常用于数据监控和清洗，如性别字段只能为男女，年龄字段必须为200内的整数等用户自定义的条件</p>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%95%B4%E6%80%A7.png" alt="用户自定义完整性"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4><ul>
+<li>并</li>
+</ul>
+<p>前提：两个表的字段类型一致</p>
+<ul>
+<li>交</li>
+<li>差</li>
+</ul>
+<p>以上三个概念同集合论中定义</p>
+<ul>
+<li><p>选择：选取行   where</p>
+</li>
+<li><p>投影：选取列   select</p>
+</li>
+<li><p>积：笛卡尔积    无连接条件</p>
+</li>
+<li><p>连接</p>
+</li>
+<li><p>θ连接：有连接条件，等同于笛卡尔积后，选取R中属性A与S中属性B之间满足θ条件的元组</p>
+<ul>
+<li>等值连接：特殊的θ链接，θ条件是＝</li>
+</ul>
+</li>
+<li><p>自然连接：特殊的等值连接，连接条件是表R和表S中具有相同名称的字段</p>
+</li>
+<li><p>外连接</p>
+<ul>
+<li>左外连接  R left out join S on R.A=S.B</li>
+</ul>
+<p>R首先与S进行笛卡尔积等得到D，然后对于R中的每一行，通过R.A=S.B在D中筛选。对于某一行，可能在S中存在多行满足R.A=S.B，全部保留； R.A=S.B的条件在S中可能一行也不存在，这时R中的每一行都必须有一个结果，S为空</p>
+<ul>
+<li>右外连接 right out join</li>
+<li>全外连接 full out join</li>
+</ul>
+</li>
+<li><p>除法</p>
+</li>
+</ul>
+<p>前提：R÷S的前提是，S的属性必须是R的真子集</p>
+<p>具体演示：</p>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E9%99%A4%E6%B3%95.png" alt="除法"></p>
+<h4 id="关系演算"><a href="#关系演算" class="headerlink" title="关系演算"></a>关系演算</h4><p>关系代数通过集合的形式进行关系运算，而关系演算则通过数理逻辑的方式进行关系运算，此处不详细研究</p>
+<h2 id="数据库语言SQL"><a href="#数据库语言SQL" class="headerlink" title="数据库语言SQL"></a>数据库语言SQL</h2><p>SQL语言集DDL、DML、DCL于一体。大的来说，主要有以下9个关键词，每种都可以表达复杂的操作请求</p>
+<ul>
+<li><p>DDL语言引导词：Create、Alter、Drop</p>
+<p>模式的定义和删除、包括定义DataBase、Table、View、Index、完整性约束条件等，也包括定义对象（RowType行对象、Type列对象）</p>
+</li>
+<li><p>DML语句引导词（增删查改）、Insert、Delete、Update、Select</p>
+</li>
+<li><p>DCL语句引导词：Grant、Revoke</p>
+<p>安全性控制：授权和取消授权</p>
+</li>
+</ul>
+<h4 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h4><ul>
+<li>Create</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">database</span> 数据库名</span><br><span class="line"></span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> 表名(列名 数据类型 [Primary <span class="keyword">key</span>|<span class="keyword">Unique</span>] [<span class="keyword">Not</span> <span class="literal">null</span>]   列名 数据类型 )</span><br><span class="line"><span class="keyword">Unique</span>:是否候选码</span><br><span class="line"></span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">view</span> viewName <span class="keyword">as</span> <span class="keyword">select</span> 子查询</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ASSERTION</span> &lt;<span class="keyword">assertion</span>-<span class="keyword">name</span>&gt; <span class="keyword">CHECK</span> &lt;predicate&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Alter</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> tablename</span><br><span class="line">[<span class="keyword">add</span> &#123;colname datatype, …&#125;] 增加新列</span><br><span class="line">[<span class="keyword">drop</span> &#123; 完整性约束名&#125;] 删除完整性约束</span><br><span class="line">[<span class="keyword">modify</span> &#123;colname datatype, …&#125;] 修改列定义</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Drop</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> 数据库名</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> viewName</span><br></pre></td></tr></table></figure>
+
+<p>Drop对应于Create，有Create就有相应的Drop</p>
+<p>Drop删除的是表的结构，不同于delete</p>
+<ul>
+<li>切换/关闭数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">database</span></span><br><span class="line"><span class="keyword">close</span> <span class="keyword">database</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>完整性约束</strong></p>
+<blockquote>
+<p>这是所说的完整性约束包括实体完整性、参照完整性、用户自定义完整性的SQL实现</p>
+</blockquote>
+<ol start="0">
+<li>基本概念</li>
+</ol>
+<p>Integrity Constraint=（O，P，A，R）</p>
+<p>​    O：数据集合：约束的对象？<br>​        列、多列(元组)、元组集合<br>​    P：谓词条件：什么样的约束？<br>​    A：触发条件：什么时候检查？<br>​    R：响应动作：不满足时怎么办？</p>
+<p>基本分类</p>
+<ul>
+<li>静态约束<ul>
+<li>列完整性—域完整性约束</li>
+<li>表完整性–关系完整性约束</li>
+</ul>
+</li>
+<li>动态约束<ul>
+<li>触发器</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>静态约束</li>
+</ol>
+<p>对象O是列或者表，谓词条件P是约束条件，触发条件A是数据库更新时，响应动作R为空</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">Table</span> Course </span><br><span class="line">	( C<span class="comment"># char(3) , Cname char(12), Chours integer,</span></span><br><span class="line">	  Credit <span class="built_in">float</span>(<span class="number">1</span>) <span class="keyword">constraint</span> ctcredit <span class="keyword">check</span> (Credit &gt;=<span class="number">0.0</span> <span class="keyword">and</span> Credit&lt;=<span class="number">5.0</span> ), </span><br><span class="line">      T<span class="comment"># char(3) references Teacher(T#) on delete cascade </span></span><br><span class="line">     //以上是列完整性约束</span><br><span class="line">     </span><br><span class="line">      , primary <span class="keyword">key</span>(C<span class="comment">#)</span></span><br><span class="line">      ,<span class="keyword">constraint</span> ctcc <span class="keyword">check</span>(Chours/Credit = <span class="number">20</span>) );</span><br><span class="line">      //以上是表完整性约束</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>列完整性约束通过空格分隔，表完整性约束通过<code>,</code>分隔</p>
+</blockquote>
+<ul>
+<li>列完整性约束</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123; NOT NULL |  //列值非空</span><br><span class="line">    [ CONSTRAINT constraintname ] //为约束命名，便于以后撤消</span><br><span class="line">        &#123; UNIQUE  //列值是唯一</span><br><span class="line">        | PRIMARY KEY  //列为主键</span><br><span class="line">        | <span class="keyword">CHECK</span> (search_cond) //列值满足条件,条件只能使用列当前值</span><br><span class="line">        | <span class="keyword">REFERENCES</span> tablename [(colname) ]</span><br><span class="line">        	[<span class="keyword">ON</span> <span class="keyword">DELETE</span> &#123; <span class="keyword">CASCADE</span> | <span class="keyword">SET</span> <span class="literal">NULL</span> &#125; ] &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>表完整性约束</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[ CONSTRAINT constraintname ]  //为约束命名，便于以后撤消</span><br><span class="line">    &#123; UNIQUE (colname &#123;, colname. . .&#125;)  //几列值组合在一起是唯一</span><br><span class="line">    | PRIMARY KEY (colname &#123;, colname. . .&#125;) //几列联合为主键</span><br><span class="line">    | <span class="keyword">CHECK</span> (search_condition) //元组多列值共同满足条件</span><br><span class="line">    //条件中只能使用同一元组的不同列当前值</span><br><span class="line">    | <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (colname &#123;, colname. . .&#125;)</span><br><span class="line">        <span class="keyword">REFERENCES</span> tablename [(colname &#123;, colname. . .&#125;)]</span><br><span class="line">        [<span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>] &#125;</span><br><span class="line">        //引用另一表tablename的若干列的值作为外键</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>check 中的条件可以是Select-From-Where 内任何Where后的语句，包含子查询</p>
+</blockquote>
+<ul>
+<li>Alter修改完整性约束</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tblname</span><br><span class="line">    [<span class="keyword">ADD</span> ( &#123; colname datatype [<span class="keyword">DEFAULT</span> &#123;default_const|<span class="literal">NULL</span>&#125; ]</span><br><span class="line">    [col_constr &#123;col_constr...&#125; ] | , table_constr &#125;</span><br><span class="line">    &#123;, colname ...&#125;) ]</span><br><span class="line">    [<span class="keyword">DROP</span> &#123; <span class="keyword">COLUMN</span> columnname | (columnname &#123;, columnname…&#125;)&#125;]</span><br><span class="line">    [<span class="keyword">MODIFY</span> ( columnname <span class="keyword">data</span>-<span class="keyword">type</span></span><br><span class="line">    [<span class="keyword">DEFAULT</span> &#123;default_const | <span class="literal">NULL</span> &#125; ] [ [ <span class="keyword">NOT</span> ] <span class="literal">NULL</span> ]</span><br><span class="line">    &#123;, columnname . . .&#125;)]</span><br><span class="line">    [<span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> constr_name]</span><br><span class="line">    [<span class="keyword">DROP</span> <span class="keyword">CONSTRAINT</span> constr_name]</span><br><span class="line">    [<span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span> ] ;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>断言</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ASSERTION</span> &lt;<span class="keyword">assertion</span>-<span class="keyword">name</span>&gt; <span class="keyword">CHECK</span> &lt;predicate&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由于每次更新数据库都要检测所有断言，判断是否满足条件；因此，类似C 的<code>goto</code>，慎用断言！</p>
+</blockquote>
+<ol start="2">
+<li>动态约束（触发器Trigger）</li>
+</ol>
+<p>不同于静态约束，O、P、A、R均需要定义</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> trigger_name <span class="keyword">BEFORE</span> | <span class="keyword">AFTER</span></span><br><span class="line">    &#123; <span class="keyword">INSERT</span> | <span class="keyword">DELETE</span> | <span class="keyword">UPDATE</span> [<span class="keyword">OF</span> colname &#123;, colname...&#125;] &#125;</span><br><span class="line">    <span class="keyword">ON</span> tablename [<span class="keyword">REFERENCING</span> corr_name_def &#123;, corr_name_def...&#125; ]</span><br><span class="line">    [<span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span> | <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">STATEMENT</span>]</span><br><span class="line">    //对更新操作的每一条结果(前者)，或整个更新操作完成(后者)</span><br><span class="line">    [<span class="keyword">WHEN</span> (search_condition)] //检查条件，如满足执行下述程序</span><br><span class="line">        &#123; <span class="keyword">statement</span> //单行程序直接书写，多行程序要用下行方式</span><br><span class="line">        | BEGIN ATOMIC statement; &#123; statement;...&#125; END &#125;</span><br></pre></td></tr></table></figure>
+
+<p>触发对象：<code>[OF colname {, colname...}] } ON tablename</code></p>
+<p>触发时机：<code>BEFORE | AFTER    { INSERT | DELETE | UPDATE</code></p>
+<p>约束条件：<code>[WHEN (search_condition)]</code></p>
+<p>响应动作：<code>{ statement //单行程序直接书写，多行程序要用下行方式
+        | BEGIN ATOMIC statement; { statement;...} END }</code></p>
+<p>对象别名：<code>[REFERENCING corr_name_def {, corr_name_def...} ]</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">corr_name_def 的定义</span><br><span class="line">&#123; OLD [ROW] [AS] old_row_corr_name //更新前的旧元组命别名为</span><br><span class="line">| NEW [ROW] [AS] new_row_corr_name //更新后的新元组命别名为</span><br><span class="line">| OLD TABLE [AS] old_table_corr_name //更新前的旧Table命别名为</span><br><span class="line">| NEW TABLE [AS] new_table_corr_name //更新后的新Table命别名为</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>典型应用场景：</strong></p>
+<ul>
+<li>设计一个触发器当进行Teacher表更新元组时, 使其工资只能升不能降</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create trigger teacher_chgsal before update of salary</span><br><span class="line">    on teacher</span><br><span class="line">    referencing new x, old y</span><br><span class="line">    for each row when (x.salary &lt; y.salary)</span><br><span class="line">    begin</span><br><span class="line">        raise_application_error(-20003, &#39;invalid salary on update&#39;);</span><br><span class="line">        &#x2F;&#x2F;此条语句为Oracle的错误处理函数</span><br><span class="line">    end;</span><br></pre></td></tr></table></figure>
+
+<p>触发对象：<code>teacher</code>表的<code>salary</code>字段</p>
+<p>触发时机：<code>before update</code></p>
+<p>约束条件：<code>(x.salary &lt; y.salary)</code>即更新的salary值小于原始的值</p>
+<p>响应动作：提示错误</p>
+<ul>
+<li>假设student(S#, Sname, SumCourse), 当删除某一同学S#时，该同学的所有选课也都要删除。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> delS<span class="comment"># after delete on Student</span></span><br><span class="line">    <span class="keyword">referencing</span> <span class="keyword">old</span> oldi</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">    	<span class="keyword">delete</span> sc <span class="keyword">where</span> S<span class="comment"># = :oldi.S# ;</span></span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>触发对象：<code>Student</code>表</p>
+<p>触发时机：<code>after delete</code></p>
+<p>约束条件：无</p>
+<p>响应动作：删除<code>student</code>某一行后，与之相关的<code>sc</code>表的相应多行数据也要删除。</p>
+<blockquote>
+<p>背景：某个学生退学后，他的所有课程成绩也要删除</p>
+</blockquote>
+<ul>
+<li>假设Dept(D#, Dname, Dean), 而Dean一定是该系教师Teacher(T#,Tname, D#, Salary)中工资最高的教师。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> upddean <span class="keyword">before</span> <span class="keyword">update</span> <span class="keyword">of</span> Dean <span class="keyword">on</span> Dept</span><br><span class="line">    <span class="keyword">referencing</span> <span class="keyword">old</span> oldi, <span class="keyword">new</span> newi</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span> <span class="keyword">when</span> ( dean <span class="keyword">not</span> <span class="keyword">in</span></span><br><span class="line">        (<span class="keyword">select</span> Tname <span class="keyword">from</span> Teacher <span class="keyword">where</span> D<span class="comment"># = :newi.D#</span></span><br><span class="line">        <span class="keyword">and</span> salary &gt;=</span><br><span class="line">        <span class="keyword">all</span> (<span class="keyword">select</span> salary <span class="keyword">from</span> Teacher <span class="keyword">where</span> D<span class="comment"># = :newi.D#))</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">    	raise_application_error(<span class="number">-20003</span>, <span class="string">'invalid Dean on update'</span>);</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>触发对象：<code>Dept</code>表的<code>Dean</code>字段</p>
+<p>触发时机：<code>before update</code></p>
+<p>约束条件：<code>Dept</code>表某一行的<code>D#</code>不是该系教师的最高工资</p>
+<p>响应动作：提示警告</p>
+<blockquote>
+<p>:star2: 触发器是一种动态完整性约束，另外一种等效的实现方式是数据库应用程序使用SQL多条语句实现，需要程序员自己操纵，更新多个表。如案例2中，删除<code>Student</code>表的某条记录后，可以通过多条SQL语句更新<code>SC</code>表等其他表，也可以实现和触发器同样的功能。</p>
+</blockquote>
+<h4 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h4><ol start="0">
+<li>Insert</li>
+</ol>
+<ul>
+<li>插入单条记录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 [ ( 列名 [,  列名 ]… ]</span><br><span class="line">       values (值 [,  值] , …) ;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>values 后面值的排列，须与into 子句后面的列名排列一致<br>若表名后的所有列名省略， 则values后的值的排列，须与该表存储中的列名排列一致</p>
+</blockquote>
+<ul>
+<li>插入多条记录</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 名 表名 [( 列名[ ，列名]…)]</span><br><span class="line"><span class="keyword">select</span>子查询</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Delete</li>
+</ol>
+<ol start="2">
+<li>Update</li>
+</ol>
+<ol start="3">
+<li>Select</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//简例</span><br><span class="line"><span class="keyword">select</span> distinc a.*,b.col1,b.col2 </span><br><span class="line"><span class="keyword">from</span> a <span class="keyword">left</span> <span class="keyword">out</span> <span class="keyword">join</span> b</span><br><span class="line"><span class="keyword">on</span> a.col=b.co1</span><br><span class="line"><span class="keyword">where</span> </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line"><span class="keyword">having</span> </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line"><span class="keyword">asc</span>/<span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span>|<span class="keyword">DISTINCT</span>|<span class="keyword">DISTINCTROW</span>|TOP]</span><br><span class="line">&#123;*|talbe.*|[table.]field1[<span class="keyword">AS</span> alias1][,[table.]field2[<span class="keyword">AS</span> alias2][,…]]&#125;</span><br><span class="line">[<span class="keyword">case</span> <span class="keyword">when</span>]</span><br><span class="line"><span class="keyword">FROM</span> tableName</span><br><span class="line">[<span class="keyword">WHERE</span>…]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span>…]</span><br><span class="line">[<span class="keyword">HAVING</span>…]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span>…]</span><br><span class="line">[<span class="keyword">LIMIT</span>]</span><br></pre></td></tr></table></figure>
+
+<p>:star2: 顺序：先where筛选（行），然后根据groupby分组，（此处进行select筛选列），再通过having<strong>筛选分组（组）</strong>，order by排序，limit限制输出行数</p>
+<ul>
+<li>模糊查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;检索所有姓张的学生学号及姓名</span><br><span class="line">Select S#, Sname From Student</span><br><span class="line">Where Sname Like ‘ 张%’ ;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;检索名字为张某某的所有同学姓名</span><br><span class="line">Select Sname From Student</span><br><span class="line">Where Sname Like ‘ 张_ _’;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;检索名字不姓张的所有同学姓名</span><br><span class="line">Select Sname From Student</span><br><span class="line">Where Sname Not Like ‘ 张%’;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多表联合查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select a.col1,b.*</span><br><span class="line">from a,b&#x2F;&#x2F;此处逗号分隔相当于笛卡尔积</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>子查询</p>
+<ul>
+<li>in/not in</li>
+<li>θsome/θall</li>
+</ul>
+<p>常用于查询最大最小值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">典型案例：查询最低工资的教师姓名</span><br><span class="line"><span class="keyword">Select</span> Tname <span class="keyword">From</span> Teacher</span><br><span class="line"><span class="keyword">Where</span> Salary &lt;= <span class="keyword">all</span> ( <span class="keyword">Select</span> Salary <span class="keyword">From</span> Teacher );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exist/not exist</li>
+</ul>
+</li>
+<li><p>并- 交- 差</p>
+<ul>
+<li>并 Union/Union ALL</li>
+<li>交 Intersect/Intersect ALL</li>
+<li>差 Except/Except ALL</li>
+</ul>
+<blockquote>
+<p>上述三个命令，不带ALL自动删除重复元组。如果需要保留重复元组需要使用ALL，假设子查询1的一个元组出现m次，子查询2的一个元组出现n次，则该元组在：</p>
+<ul>
+<li>子查询1 Union ALL 子查询2  ，出现m + n次</li>
+<li>子查询1 Intersect ALL 子查询2  ，出现min(m,n)次 </li>
+<li>子查询1 Except ALL 子查询2  ，出现max(0, m – n)次</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="DCL—数据库安全"><a href="#DCL—数据库安全" class="headerlink" title="DCL—数据库安全"></a>DCL—数据库安全</h4><p><strong>自主安全性机制</strong>：存取控制(AccessControl)<br>    通过权限在用户之间的传递，使用户自主管理数据库安全性<br><strong>强制安全性机制</strong>：<br>通过对数据和用户强制分类，使得不同类别用户能够访问不同类别的数据</p>
+<ol start="0">
+<li>自主安全性机制</li>
+</ol>
+<blockquote>
+<p>自主安全性是通过授权机制来实现的</p>
+<p>户在使用数据库前必须由DBA 处获得一个账户，并由DBA授予该账户一定的权限，该账户的用户依据其所拥有的权限对数据库进行操作授予该账户一定的权限，该账户的用户依据其所拥有的权限对数据库进行操作; 同时，该帐户用户也可将其所拥有的权利转授给其他的用户同时，该帐户用户也可将其所拥有的权利转授给其他的用户( 账户)，由此实现权限在用户之间的传播和控制。</p>
+</blockquote>
+<p><strong>基本思路</strong></p>
+<p>AccessRule ::= ( S, O, t, P)</p>
+<p>S:  请求主体( 用户)——用户多时，可以按用户组建立访问规则</p>
+<p>O: 访问对象——访问对象可大可小(目标粒度Object granularity):属性/字段、记录/元组、关系、数据库</p>
+<p>t: 访问权利——包括创建、增、删、改、查等</p>
+<p>P:  谓词——拥有权利需满足的条件</p>
+<p><strong>自主安全性的实现方式</strong></p>
+<ul>
+<li><p>存储矩阵</p>
+</li>
+<li><p>视图</p>
+<p>根据需求定义不同用户级别可以看到的视图，再利用<code>Grant</code>命令将视图赋值给用户</p>
+</li>
+</ul>
+<p><strong>Grant</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> &#123;<span class="keyword">all</span> <span class="keyword">PRIVILEGES</span> | privilege &#123;,privilege…&#125;&#125;</span><br><span class="line"><span class="keyword">ON</span> [<span class="keyword">TABLE</span>] tablename | viewname</span><br><span class="line"><span class="keyword">TO</span> &#123;<span class="keyword">public</span> | <span class="keyword">user</span>-<span class="keyword">id</span> &#123;, <span class="keyword">user</span>-<span class="keyword">id</span>…&#125;&#125;</span><br><span class="line">[<span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Grant命令粒度比较大，用于表名和视图</p>
+</blockquote>
+<p><strong>Revoke——撤销授权</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> &#123;<span class="keyword">all</span> <span class="keyword">privilEges</span> | priv &#123;, priv…&#125; &#125; <span class="keyword">ON</span> tablename | viewname</span><br><span class="line"><span class="keyword">FROM</span> &#123;<span class="keyword">public</span> | <span class="keyword">user</span> &#123;, <span class="keyword">user</span>…&#125; &#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>A–&gt;B–&gt;C，当B撤销授权时，C也同时撤销</p>
+</blockquote>
+<ol>
+<li>强制安全性机制</li>
+</ol>
+<p>暂未学习</p>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> view_name [( 列名[ ，列名] …)]</span><br><span class="line"><span class="keyword">as</span> 询 子查询 [<span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>]</span><br></pre></td></tr></table></figure>
+
+<p>​        不像base table，视图是一个想象的表，实际物理存储中并不存在。当需要使用某个视图时，才执行视图生成命令。视图生成之后，可以和普通表一样的访问方式。一般视图仅用于select，是使用更新命令（增删改）。</p>
+<h4 id="SQL-Server"><a href="#SQL-Server" class="headerlink" title="SQL Server"></a>SQL Server</h4><p>SQL Server 的系统数据库</p>
+<ul>
+<li>Master ： 是SQL Server中最重要的系统数据库，存储中最重要的系统数据库，存储SQL Server 中的元数据。</li>
+<li>Model： 模板数据库，在创建新的数据库时，SQL Server将会复制此数据库作为新数据库的基础</li>
+<li>Msdb： 代理服务数据库，提供一个存储空间。</li>
+<li>Tempdb： 临时数据库，为所有的临时表、临时存储过程及其他临时操作提供存储空间，断开连接时，临时表与存储过程自动被删除。</li>
+</ul>
+<blockquote>
+<p>Master数据库是存储表结构的数据库</p>
+</blockquote>
+<h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><p>数据字典就是数据库的元数据，存储表的结构信息，是数据的数据</p>
+<p>列的元数据信息如下图所示,通过下述<code>sql</code>语句可以查询<code>STUDENT</code>表的所有列信息</p>
+<p>非常类似高级语言中的<strong>反射</strong>功能，提供一组API对数据结构信息进行访问</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> Column_Name <span class="keyword">From</span> ALL_TAB_Columns</span><br><span class="line"><span class="keyword">Where</span> Table_Name = ‘STUDENT’ ;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8.png" alt="数据字典"></p>
+<h4 id="嵌入式SQL-amp-ODBC-amp-JDBC"><a href="#嵌入式SQL-amp-ODBC-amp-JDBC" class="headerlink" title="嵌入式SQL&amp;ODBC&amp;JDBC"></a>嵌入式SQL&amp;ODBC&amp;JDBC</h4><ul>
+<li>几个基本问题</li>
+</ul>
+<p>在高级语言中嵌入SQL，存在以下几个基本问题</p>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%B5%8C%E5%85%A5%E5%BC%8FSQL.png" alt="嵌入式SQL"></p>
+<ul>
+<li>ODBC/JDBC</li>
+</ul>
+<p>ODBC供C,C++, C#, Visual Basic, Power Builder调用数据库</p>
+<p>JDBC供Java调用数据库</p>
+<p>ODBC/JDBC隔离应用程序和DBMS之间的交互，在中间插入ODBC/JDBC层，可以实现对多种数据库，如Mysql、Oracle、DB2等多种数据库管理系统的交互。程序员主要调用ODBC/JDBC提供的API函数，不用直接与DBMS对接。</p>
+<ul>
+<li>框架的作用</li>
+</ul>
+<p>程序员在实际开发中一般也不用直接操纵ODBC/JDBC，一般高级语言框架实现对数据库的简单高效访问。例如Java 的Spring框架在ODBC/JDBC的基础上进一步封装函数，Go语言的Gin框架等。程序员在真正实现的时候其实是比较简单的，框架已经把大部分的工作做好了。</p>
+<p>使用框架开发应用程序，需要注意以下几个问题：</p>
+<ul>
+<li>宿主语言和SQL同一列数据类型的差异</li>
+<li><code>where</code>中多个条件的<code>And</code>连接符问题，自己拼接字符串有这个问题，框架应该都做好了</li>
+<li>宿主语言向SQL数据注入的方式</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> XXX</span><br><span class="line"><span class="keyword">from</span> XXX</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">name</span>=XXX <span class="keyword">and</span> <span class="keyword">id</span>=XXX</span><br></pre></td></tr></table></figure>
+
+<p><code>XXX</code>都是可以用Java变量注入的，需要注意传入的书写方式</p>
+<ul>
+<li>高级语言如何处理数据库事务机制——<code>commit</code>与<code>rollback</code></li>
+<li>自己拼接字符串引发的SQL注入漏洞</li>
+</ul>
+<h2 id="数据建模与数据库设计"><a href="#数据建模与数据库设计" class="headerlink" title="数据建模与数据库设计"></a>数据建模与数据库设计</h2><h2 id="数据库管理系统的实现技术"><a href="#数据库管理系统的实现技术" class="headerlink" title="数据库管理系统的实现技术"></a>数据库管理系统的实现技术</h2><ul>
+<li>Database System Implementation ,2ndEdition,机械工业出版社，2010</li>
+</ul>
+<h3 id="物理存储"><a href="#物理存储" class="headerlink" title="物理存储"></a>物理存储</h3><p>存储单位：bit、Byte、KB、MB、GB、TB、PB、EB、ZB、YB、BB</p>
+<p>内存页（Page）=磁盘块（Block）</p>
+<p>页面置换算法</p>
+<p><strong>RAID技术</strong></p>
+<ul>
+<li>并行处理 :并行读取多个磁盘<ul>
+<li>比特级拆分:一个字节被拆分成8个比特位,不同比特位存储于不同磁盘.、</li>
+<li>块级拆分: 一个文件由多个块组成，不同块存储于不同磁盘.</li>
+</ul>
+</li>
+<li>可靠性 :奇偶校验与纠错<ul>
+<li>扇区/块读写校验：对一个扇区/块读写做校验</li>
+<li>磁盘间读写校验: 多个磁盘间共同构成的信息读写做校验</li>
+</ul>
+</li>
+</ul>
+<h3 id="索引技术"><a href="#索引技术" class="headerlink" title="索引技术"></a>索引技术</h3><p>索引文件是一种辅助存储结构，<strong>其存在与否不改变存储表的物理存储结构</strong>；然而其存在，可以明显提高存储表的访问速度。</p>
+<ul>
+<li>有索引时，更新操作必须同步更新索引文件和主文件</li>
+<li>索引文件比主文件小很多。通过检索一个小的索引文件(可全部装载进内存)，快速定位后，再有针对性的读取非常大的主文件中的有关记录</li>
+</ul>
+<p><strong>SQL</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">unique</span>] <span class="keyword">INDEX</span> indexname</span><br><span class="line">    <span class="keyword">ON</span> tablename ( colname [<span class="keyword">asc</span> | <span class="keyword">desc</span>]</span><br><span class="line">    &#123;, colname [<span class="keyword">asc</span> | <span class="keyword">desc</span>] . . .&#125; );</span><br><span class="line">    </span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> indexname;</span><br></pre></td></tr></table></figure>
+
+<p><strong>索引分类</strong></p>
+<ul>
+<li>稠密索引 与 稀疏索引</li>
+<li>主索引与辅助索引</li>
+<li>聚簇索引</li>
+<li>倒排索引</li>
+</ul>
+<h4 id="B-树基础知识"><a href="#B-树基础知识" class="headerlink" title="B+树基础知识"></a>B+树基础知识</h4><p><strong>B+树的基本性质</strong>（m阶的B树）</p>
+<ul>
+<li>叶子节点才是真正存储数据的地方，非叶结点仅具有<strong>索引</strong>作用，跟<strong>记录有关的信息均存放在叶结点</strong>中。</li>
+<li>叶子节点有序链表：树的所有叶结点构成一个<strong>有序链表</strong>，可以按照关键码排序的次序遍历全部记录</li>
+<li>根结点至少有两个子女</li>
+<li>每个中间节点都至少包含<code>ceil(m / 2)</code>个孩子，最多有m个孩子。中间节点不包含真实的数据指针</li>
+<li>每一个叶子节点都包含k-1个元素，其中 m/2 &lt;= k &lt;= m。</li>
+<li>所有的叶子结点都位于同一层</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RealNode</span>;</span><span class="comment">//数据库中的一条记录Record</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DataNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> key;<span class="comment">//索引Key</span></span><br><span class="line">    RealNode *value;<span class="comment">//指向真实数据的指针</span></span><br><span class="line">&#125;;<span class="comment">//真实数据</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>&#123;</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;DataNode&gt; value;<span class="comment">//当前节点的所有数据</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;TreeNode *&gt; son;<span class="comment">//儿子数组</span></span><br><span class="line">    TreeNode *next;<span class="comment">//叶子	`	节点特有的链表结构</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/B+%E6%A0%91.png" alt="B+树示意图"></p>
+<p><a href="https://www.jianshu.com/p/71700a464e97">B+树基本操作</a></p>
+<ul>
+<li>建树（插入）</li>
+<li>查找</li>
+<li>删除</li>
+</ul>
+<p><strong>B+树的优点</strong></p>
+<p>比起B树，B+树 ①IO次数更少 ②查询性能很稳定  ③范围查询更简便</p>
+<blockquote>
+<ol>
+<li><p>B+树中间节点没有Data数据，所以同样大小的磁盘页可以容纳更多的节点元素。所以数据量相同的情况下，B+树比B树更加“矮胖“，因此使用的IO查询次数更少。</p>
+</li>
+<li><p>B即Balance的缩写，是一棵平衡多叉树</p>
+</li>
+<li><p>区间查询类似线段树的操作，更加方便.所有叶子节点形成有序链表，便于范围查询</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="B-树在数据库中应用"><a href="#B-树在数据库中应用" class="headerlink" title="B+树在数据库中应用"></a><strong>B+树在数据库中应用</strong></h4><p><strong>基本特征</strong></p>
+<ul>
+<li><strong>非叶结点</strong>指针指向<strong>索引块</strong>，<strong>叶结点</strong>指针指向主文件的<strong>数据块</strong>或<strong>数据记录</strong></li>
+<li>指向主文件的指针仅出现于叶结点（真实存储数据）</li>
+<li>所有叶结点即可覆盖所有键值的索引</li>
+<li>索引字段值在叶结点中是按<strong>顺序排列</strong>的</li>
+</ul>
+<p><strong>具体实施方式</strong>（数据库的什么部分是B+树的Key）</p>
+<ul>
+<li><p>用B+树建立键属性稠密索引</p>
+<p>​        <strong>索引字段是主文件的主键</strong>，索引是稠密的。指针指向的是记录。表的存储方式(主文件)可以按主键排序，也可以不按主键排序</p>
+</li>
+<li><p>用B+树建立稀疏索引(或主索引)</p>
+<p>​        索引字段是主文件的主键，索引是稀疏的。主文件必须按主键排序。指针指向的是<strong>数据块</strong>,一个数据块中可能存在多条数据</p>
+</li>
+<li><p>用B+树建立非键属性稠密索引</p>
+<p>​        采用表的非主键字段作为B+树的Key，由于非主键字段可能存在重复，但是索引文件的索引字段是无重复的。主文件按非键属性排序。指针指向的是记录。</p>
+<blockquote>
+<p>该方法类似<strong>前向星存图</strong>的过程，主文件按照某个字段排序，然后记录每个字段的起始位置</p>
+</blockquote>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/B+%E6%A0%91%E5%BA%94%E7%94%A8.png" alt="B+树应用"></p>
+</li>
+<li><p>用B+树建立非键属性稠密索引</p>
+<p>索引字段是主文件的非键属性。主文件不按此非键属性排序。索引文件的索引字段值是有重复的。指针指向的是记录。</p>
+</li>
+</ul>
+<p><strong>B+树 vs B树</strong></p>
+<p><strong>B树</strong></p>
+<ul>
+<li>索引字段值仅出现一次或者在叶结点或者在非叶结点；</li>
+<li>指向主文件的指针出现于叶结点或非叶结点；</li>
+<li>所有结点才能覆盖所有键值的索引</li>
+</ul>
+<h4 id="散列索引"><a href="#散列索引" class="headerlink" title="散列索引"></a>散列索引</h4><ul>
+<li><p>静态散列索引：桶的数目M是固定值</p>
+</li>
+<li><p>动态散列索引：桶的数目随键值增多，动态增加</p>
+<ul>
+<li>可扩展散列索引</li>
+<li>线性散列索引</li>
+</ul>
+</li>
+</ul>
+<p><strong>可扩展散列索引</strong>——桶的数量每次翻倍</p>
+<p>参数k——i可能的最大的值， 可能的最大桶的数目为 2^k ，逐渐被使用</p>
+<p>参数i——i 为散列函数当前已经使用到的最多位数</p>
+<p>参数n=2^i ——当前桶数</p>
+<p><strong>实现方案</strong></p>
+<ul>
+<li>散列函数h(k)是<strong>k的二进制的前i位</strong>，放入到对应桶中</li>
+<li>如果当前桶放不下，此处存在两种情况；<ul>
+<li>如当前桶已经是最细粒度的桶，那么对全局的i++，增加桶的数量。把当前桶分裂成两个桶，对应的数据分到两个桶中；其他的桶也分裂成两个桶，但是指向同一个数据块</li>
+<li>如果当前桶不是最细粒度的桶，那么将当前的桶进行分裂即可，空间×2，其他桶不需要进行操作。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p> 并非每个桶都有一个数据块；如果某些桶中的所有记录可以放在一个块中，则这些桶可能共享一个块。</p>
+</blockquote>
+<p><strong>缺点</strong></p>
+<ul>
+<li><p>当桶数组需要翻倍时，要做大量的工作(当i很大时)；</p>
+</li>
+<li><p>当桶数翻倍后，其在主存中可能就装不下了，或者要占用更大的空间</p>
+</li>
+<li><p>如果每块的记录数很少，那么很有可能某一块的分裂比在逻辑上需要的分裂时间提前很多</p>
+</li>
+</ul>
+<p><strong>线性散列索引</strong>——桶的数量每次+1</p>
+<p><strong>实现方案</strong></p>
+<ul>
+<li><p>散列函数h(k)是<strong>k的二进制的后i位</strong>，放入到对应桶中（如果h(k)桶不存在另外处理）</p>
+</li>
+<li><p>桶数n的选择总是使存储块的平均记录数保持与存储块所能容纳的记录总数成一个固定的比例，例如80%。超过此比例，则桶数增长1块，分裂</p>
+</li>
+<li><p>分裂规则：0–&gt;00,10    1–&gt;01,11    00–&gt;000,1000</p>
+</li>
+</ul>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%BA%BF%E6%80%A7%E6%95%A3%E5%88%97.png" alt="线性散列"></p>
+<h3 id="查询实现算法"><a href="#查询实现算法" class="headerlink" title="查询实现算法"></a>查询实现算法</h3><blockquote>
+<p>​        将SQL语句首先编译成基础的关系运算，如交并补、选择、投影等，这个过程可以调整顺序从而实现SQL查询优化。然后进入物理查询优化：同一个“连接”操作可能由于存储方法、索引方法等的不同，在底层通过不同的物理存储实现（<strong>同一关系操作的不同物理例行程序</strong>）。物理优化主要解决内存和磁盘的交互问题，尽量减小磁盘I/O的次数，提高内存查询的效率。</p>
+</blockquote>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96.png" alt="查询优化"></p>
+<p><strong>数据库的三大类操作</strong></p>
+<ul>
+<li>一次单一元组的一元操作：选择、投影</li>
+</ul>
+<p>通过迭代器算法实现</p>
+<ul>
+<li>整个关系（表）的一元操作：DISTINCT、Group by、sorting</li>
+<li>整个关系的二元操作：交并补、积、连接等</li>
+</ul>
+<p>以上两者通过一趟扫描算法、两趟扫描算法、多趟扫描算法实现。底层具体通过排序技术、散列技术、索引技术实现</p>
+<p><strong>连接操作的逻辑实现和物理实现</strong></p>
+<blockquote>
+<p>逻辑实现比较简单，扫描R表的每一个记录，S表的每一个记录，如果R.A==S.A，那么表示两个记录可以连接</p>
+<p>物理实现比较复杂，表的记录存储在硬盘上，以磁盘块为存储单位，每一个Block上存储多条记录。</p>
+</blockquote>
+<ul>
+<li>Algorithm 1</li>
+</ul>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Algorithm1.png" alt></p>
+<blockquote>
+<p>黑色的表示磁盘I/O操作，蓝色的表示内存操作，时间复杂度主要集中在磁盘操作</p>
+</blockquote>
+<p>​    每次读取R表中的一个Block和S表的一个Block，然后扫描连接。</p>
+<p>​    时间复杂度：B<sub>R</sub>+B<sub>R</sub>B<sub>S</sub></p>
+<p>​    空间复杂度：占用内存3b  (b是一个磁盘块大小)</p>
+<ul>
+<li>Algorithm 2——全主存</li>
+</ul>
+<blockquote>
+<p>前提：两个表都可以载入内存，把两个表的所有Block都载入内存</p>
+</blockquote>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Algorithm2.png" alt></p>
+<p>​    时间复杂度：B<sub>R</sub>+B<sub>S</sub></p>
+<ul>
+<li>Algorithm 3——半主存</li>
+</ul>
+<blockquote>
+<p>前提：一个表可以放入内存，另外一个大表不行，类似大数据的Mapjoin</p>
+</blockquote>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Algorithm3.png" alt></p>
+<p>​    时间复杂度：B<sub>R</sub>+B<sub>S</sub></p>
+<ul>
+<li>Algorithm 4</li>
+</ul>
+<blockquote>
+<p>两个表均无法放入内存，将R表每次选M-2个Block放入内存，S表每次选1个Block载入内存，还有一个Block用于存放最终结果。</p>
+</blockquote>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Algorithm4.png" alt></p>
+<p>​    时间复杂度：B<sub>R</sub>B<sub>s</sub>/(M-2)+B<sub>S</sub></p>
+<ul>
+<li><p>Algorithm 5、</p>
+<p>对Algorithm4内存部分可以进行改进，通过建立Hash表对M-2个Block进行快速检索，而不是上述方法的简单扫描。</p>
+</li>
+</ul>
+<h4 id="迭代器方法——单一元组一元操作"><a href="#迭代器方法——单一元组一元操作" class="headerlink" title="迭代器方法——单一元组一元操作"></a>迭代器方法——单一元组一元操作</h4><p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/iterativemethod.png" alt></p>
+<blockquote>
+<p>不同于<code>物化计算策略</code>，迭代器方法用于流水线计算策略，该方法不需要保存<strong>中间结果</strong>，连接操作的中间结果很可能引起维度爆炸</p>
+</blockquote>
+<p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/scan.png" alt="迭代器扫描表"></p>
+<blockquote>
+<p>通过迭代器方法扫描表，本质上就是对磁盘Block进行封装，依次读取每个Block的每一条记录</p>
+</blockquote>
+<h4 id="一趟扫描算法"><a href="#一趟扫描算法" class="headerlink" title="一趟扫描算法"></a>一趟扫描算法</h4><p>​        本质就是通过排序、散列、B+树等建立一个可以快速检索的数据结构，然后从表格中每次读取一条记录就进行检索。前提是内存可以容得下该数据结构</p>
+<p><strong>基于索引的算法——索引技术是如何加速查找的</strong></p>
+<ul>
+<li><p>基于索引的选择</p>
+</li>
+<li><p>基于索引的连接——Zig-Zag连接算法</p>
+<p>双指针</p>
+</li>
+</ul>
+<h4 id="两趟扫描算法"><a href="#两趟扫描算法" class="headerlink" title="两趟扫描算法"></a>两趟扫描算法</h4><blockquote>
+<p>本质就是多路归并排序</p>
+</blockquote>
+<ol>
+<li><p>基本原理</p>
+<p>问题：内存只有4GB，待排序文件100GB，如何排序？（外排序问题）</p>
+</li>
+</ol>
+<p>​        将100GB分成多个子集，每个子集2GB，刚好可以装入内存（此处最好让内存有其他空间）。将每个子集分别装入内存进行排序后输出到磁盘，此时磁盘中有50个已经排好序的大小为2GB的文件。</p>
+<p>​        从每个子集文件（2GB）中读取一小段数据（size*50≈2GB）载入内存，使得总的大小小于内存大小。其实每次可以从每个子集中读取一个数据，但是这样会涉及到较多的I/O操作，降低效率；因此，每次应该尽量多的读取数据到内存。接下来的过程就是一个改进版的多路归并排序过程：50个排好序的序列进行多路归并，使用小根堆优化；当某一路数据结束的时候需要继续从磁盘中读取后边的数据。</p>
+<ol start="2">
+<li><p>Distinct</p>
+<p>第一趟：划分子表，并进行子表排序<br>第二趟：归并阶段，在排序的基础上，直接将重复的记录剔出掉-不输出</p>
+<blockquote>
+<p>归并过程中，弹出最小值和上一次弹出来的最小值一样就删除</p>
+</blockquote>
+</li>
+<li><p>Groupby</p>
+<p>第一趟：划分子表，并进行子表排序<br>第二趟：归并阶段，在排序基础上，将不重复的记录，作为新分组输出；重复的记录进行分组聚集计算。</p>
+<blockquote>
+<p>按照Groupby的键进行排序，归并过程同样的记录分组聚集</p>
+</blockquote>
+</li>
+<li><p>交并补</p>
+<p>Union All直接将两个表叠加</p>
+<p>Union类似Distinc过程，需要去重复</p>
+</li>
+<li><p>join</p>
+<p>R和S分别按照连接键排序，这个地方我觉得可以用两个小根堆维护，相当于R和S分别整体有序的序列，然后使用双指针（Zig-Zag连接算法）</p>
+</li>
+</ol>
+<h3 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h3><p><img src="/2020/04/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96.png" alt="查询优化"></p>
+<h4 id="逻辑查询优化"><a href="#逻辑查询优化" class="headerlink" title="逻辑查询优化"></a>逻辑查询优化</h4><p>​        SQL表达式通过编译，形成基本的关系代数表达式，但是此表达式一般不能直接执行，通常该表达式不是最优执行顺序，因此需要对关系表达式进行优化。逻辑查询优化主要的工作就是优化语法树，改变操作顺序。优化策略包括：<code>尽可能地早做选择和投影</code>、<code>把选择与投影串接起来</code>……</p>
+<p>​        通过一些基本定理——关系代数操作次序交换的等价性，可以将SQL语句优化成最优的关系表达式</p>
+<h4 id="物理查询优化"><a href="#物理查询优化" class="headerlink" title="物理查询优化"></a>物理查询优化</h4><p>​        对于逻辑查询优化后得到的关系代数表达式，每一个基本操作，如“选择”，“投影”，“连接”等都有多种物理实现，大的方面包括迭代器方法、一趟扫描方法、两趟扫描方法，具体底层实现又可以分成排序方法、散列方法、索引方法。因此对于一个固定的关系代数表达式，通常存在多种物理实现的策略。对于每一种策略，需要评估该实现方法的代价。评估的方法就是利用数据字典，利用关系的元数据信息，如“表的记录数”、“Block数”、“不同属性的个数”等信息，评估每种方案的代价，最后选择一种最优的物理实现策略。确定方案之后，交给下层的计算引擎实现。</p>
+<h3 id="事务处理技术"><a href="#事务处理技术" class="headerlink" title="事务处理技术"></a>事务处理技术</h3><blockquote>
+<p>InnoDB，是MySQL的数据库引擎之一，现为MySQL的默认存储引擎</p>
+</blockquote>
+<p>​        通常事务必须满足4个条件（ACID）：原子性（Atomicity，或称不可分割性）、一致性（Consistency）、隔离性（Isolation，又称独立性）、持久性（Durability）。</p>
+<p><strong>1、A (Atomicity) 原子性</strong></p>
+<p>原子性很容易理解，也就是说事务里的所有操作要么全部做完，要么都不做，事务成功的条件是事务里的所有操作都成功，只要有一个操作失败，整个事务就失败，需要回滚。</p>
+<p>比如银行转账，从A账户转100元至B账户，分为两个步骤：1）从A账户取100元；2）存入100元至B账户。这两步要么一起完成，要么一起不完成，如果只完成第一步，第二步失败，钱会莫名其妙少了100元。</p>
+<p><strong>2、C (Consistency) 一致性</strong></p>
+<p>一致性也比较容易理解，也就是说数据库要一直处于一致的状态，事务的运行不会改变数据库原本的一致性约束。</p>
+<p>例如现有完整性约束a+b=10，如果一个事务改变了a，那么必须得改变b，使得事务结束后依然满足a+b=10，否则事务失败。</p>
+<p><strong>3、I (Isolation) 独立性</strong></p>
+<p>所谓的独立性是指并发的事务之间不会互相影响，如果一个事务要访问的数据正在被另外一个事务修改，只要另外一个事务未提交，它所访问的数据就不受未提交事务的影响。</p>
+<p>比如现在有个交易是从A账户转100元至B账户，在这个交易还未完成的情况下，如果此时B查询自己的账户，是看不到新增加的100元的。</p>
+<p><strong>4、D (Durability) 持久性</strong></p>
+<p>持久性是指一旦事务提交后，它所做的修改将会永久的保存在数据库上，即使出现宕机也不会丢失。</p>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>事务的基本要素</p>
+<p>事务隔离级别</p>
+<p>如何解决事务的并发问题(脏读，幻读)？</p>
+<p>MVCC多版本并发控制？</p>
+<p>binlog,redolog,undolog都是什么，起什么作用？</p>
+<p>InnoDB的行锁/表锁？</p>
+<p>myisam和innodb的区别，什么时候选择myisam？</p>
+<p>为什么选择B+树作为索引结构？</p>
+<p>索引B+树的叶子节点都可以存哪些东西？</p>
+<p>查询在什么时候不走（预期中的）索引？</p>
+<p>sql如何优化?</p>
+<p>explain是如何解析sql的？</p>
+<p>order by原理</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.icourse163.org/learn/HIT-1001516002?tid=1450161445#/learn/content">哈尔滨工业大学数据库课程Mooc</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a>, <a class="has-link-grey -link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/11/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">大数据技术</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/02/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/">
+                <span class="level-item">软件工程导论</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'pMuYM3r4D3NFlfBDakWht05k-gzGzoHsz',
+        app_key: '4zl0pxxukDrDNf0piObzuXfC',
+        placeholder: '请留下您的宝贵意见吧'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/Golden_Medal_-1_Icon.svg" alt="博雅">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        博雅
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        zju小硕一枚
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            16
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            27
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/MasterXuBoya" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/MasterXuBoya">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="E-Mail" href="/xuboya@zju.edu.cn">
+                
+                <i class="fa fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">
+            <span class="level-start">
+                <span class="level-item">个人网站</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/Hexo/">
+            <span class="level-start">
+                <span class="level-item">Hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+            <span class="level-start">
+                <span class="level-item">基础知识</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+            <span class="level-start">
+                <span class="level-item">大数据</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">计算机网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">软件工程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/Docker/">
+            <span class="level-start">
+                <span class="level-item">Docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/Git/">
+            <span class="level-start">
+                <span class="level-item">Git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/Vim/">
+            <span class="level-start">
+                <span class="level-item">Vim</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">数据结构与算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Kickstart/">
+            <span class="level-start">
+                <span class="level-item">Kickstart</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">编程语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/">
+            <span class="level-start">
+                <span class="level-item">Golang</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Markdown/">
+            <span class="level-start">
+                <span class="level-item">Markdown</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#引言">
+        <span class="has-mr-6">1</span>
+        <span>引言</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#数据库基本概念">
+        <span class="has-mr-6">1.1</span>
+        <span>数据库基本概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#课程内容概览">
+        <span class="has-mr-6">1.2</span>
+        <span>课程内容概览</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#关系模型理论">
+        <span class="has-mr-6">2</span>
+        <span>关系模型理论</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#基本概念">
+        <span class="has-mr-6">2.1.1</span>
+        <span>基本概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#关系代数">
+        <span class="has-mr-6">2.1.2</span>
+        <span>关系代数</span>
+        </a></li><li>
+        <a class="is-flex" href="#关系演算">
+        <span class="has-mr-6">2.1.3</span>
+        <span>关系演算</span>
+        </a></li></ul></ul></li><li>
+        <a class="is-flex" href="#数据库语言SQL">
+        <span class="has-mr-6">3</span>
+        <span>数据库语言SQL</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#DDL">
+        <span class="has-mr-6">3.1.1</span>
+        <span>DDL</span>
+        </a></li><li>
+        <a class="is-flex" href="#DML">
+        <span class="has-mr-6">3.1.2</span>
+        <span>DML</span>
+        </a></li><li>
+        <a class="is-flex" href="#DCL—数据库安全">
+        <span class="has-mr-6">3.1.3</span>
+        <span>DCL—数据库安全</span>
+        </a></li><li>
+        <a class="is-flex" href="#视图">
+        <span class="has-mr-6">3.1.4</span>
+        <span>视图</span>
+        </a></li><li>
+        <a class="is-flex" href="#SQL-Server">
+        <span class="has-mr-6">3.1.5</span>
+        <span>SQL Server</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据字典">
+        <span class="has-mr-6">3.1.6</span>
+        <span>数据字典</span>
+        </a></li><li>
+        <a class="is-flex" href="#嵌入式SQL-amp-ODBC-amp-JDBC">
+        <span class="has-mr-6">3.1.7</span>
+        <span>嵌入式SQL&ODBC&JDBC</span>
+        </a></li></ul></ul></li><li>
+        <a class="is-flex" href="#数据建模与数据库设计">
+        <span class="has-mr-6">4</span>
+        <span>数据建模与数据库设计</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据库管理系统的实现技术">
+        <span class="has-mr-6">5</span>
+        <span>数据库管理系统的实现技术</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#物理存储">
+        <span class="has-mr-6">5.1</span>
+        <span>物理存储</span>
+        </a></li><li>
+        <a class="is-flex" href="#索引技术">
+        <span class="has-mr-6">5.2</span>
+        <span>索引技术</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#B-树基础知识">
+        <span class="has-mr-6">5.2.1</span>
+        <span>B+树基础知识</span>
+        </a></li><li>
+        <a class="is-flex" href="#B-树在数据库中应用">
+        <span class="has-mr-6">5.2.2</span>
+        <span>B+树在数据库中应用</span>
+        </a></li><li>
+        <a class="is-flex" href="#散列索引">
+        <span class="has-mr-6">5.2.3</span>
+        <span>散列索引</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#查询实现算法">
+        <span class="has-mr-6">5.3</span>
+        <span>查询实现算法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#迭代器方法——单一元组一元操作">
+        <span class="has-mr-6">5.3.1</span>
+        <span>迭代器方法——单一元组一元操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#一趟扫描算法">
+        <span class="has-mr-6">5.3.2</span>
+        <span>一趟扫描算法</span>
+        </a></li><li>
+        <a class="is-flex" href="#两趟扫描算法">
+        <span class="has-mr-6">5.3.3</span>
+        <span>两趟扫描算法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#查询优化">
+        <span class="has-mr-6">5.4</span>
+        <span>查询优化</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#逻辑查询优化">
+        <span class="has-mr-6">5.4.1</span>
+        <span>逻辑查询优化</span>
+        </a></li><li>
+        <a class="is-flex" href="#物理查询优化">
+        <span class="has-mr-6">5.4.2</span>
+        <span>物理查询优化</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#事务处理技术">
+        <span class="has-mr-6">5.5</span>
+        <span>事务处理技术</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#面试题">
+        <span class="has-mr-6">6</span>
+        <span>面试题</span>
+        </a></li><li>
+        <a class="is-flex" href="#Reference">
+        <span class="has-mr-6">7</span>
+        <span>Reference</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo3.svg" alt="数据库基础知识" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 xuboya&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                <br>
+                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                <script>
+                    var now = new Date(); 
+                    function createtime() { 
+                        var grt= new Date("03/01/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                        now.setTime(now.getTime()+250); 
+                        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                    } 
+                setInterval("createtime()",250);
+                </script>
+                <br>
+                <script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>
+
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+                </script>
+                
+                    <br>
+                    <span id="busuanzi_container_site_uv">
+                        共<span id="busuanzi_value_site_uv">0</span>个访客
+                    </span>
+                   
+                
+                
+
+                
+                    
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

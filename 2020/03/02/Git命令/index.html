@@ -19,8 +19,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/gallery/thumbnails/Under%20the%20Wave%20off%20Kanagawa.jpg">
 <meta property="article:published_time" content="2020-03-02T13:23:31.000Z">
-<meta property="article:modified_time" content="2020-03-27T05:54:20.489Z">
+<meta property="article:modified_time" content="2020-03-27T15:07:34.207Z">
 <meta property="article:author" content="xuboya">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Github">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/gallery/thumbnails/Under%20the%20Wave%20off%20Kanagawa.jpg">
 
@@ -161,11 +163,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-02T13:23:31.000Z">2020-03-02</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%B7%A5%E5%85%B7/Git/">Git</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 924 个字)
+                    8 分钟 读完 (大约 1228 个字)
                 </span>
                 
                 
@@ -196,8 +202,8 @@
 <p>Git本地化操作就是解决Working Directory、Stage、Local Repository三者之间的各种版本回退问题</p>
 </blockquote>
 <p>参考文章：<a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解git</a></p>
-<p><img src="https://static.liaoxuefeng.com/files/attachments/919020037470528/0" alt="Git本地文件结构"></p>
-<p>！<a href="Git命令/GitIllustration.png">Git本地结构</a></p>
+<p><img src="/2020/03/02/Git%E5%91%BD%E4%BB%A4/0.jpg" alt="Git本地文件结构"></p>
+<p><img src="/2020/03/02/Git%E5%91%BD%E4%BB%A4/GitIllustration.png" alt="Git本地结构"></p>
 <p>Git 的本地化操作主要集中在以下几个命令，每个命令都有一个常见的语法，细则的话则有很多，实际使用时查阅手册即可：</p>
 <ul>
 <li>git add</li>
@@ -215,13 +221,39 @@
 <li>git merge</li>
 <li>git rebase:另外一种合并方式</li>
 </ul>
-<h2 id="Git-远程操作"><a href="#Git-远程操作" class="headerlink" title="Git 远程操作"></a>Git 远程操作</h2><ul>
+<h2 id="Git-远程操作"><a href="#Git-远程操作" class="headerlink" title="Git 远程操作"></a>Git 远程操作</h2><h3 id="常见命令："><a href="#常见命令：" class="headerlink" title="常见命令："></a>常见命令：</h3><ul>
 <li>git bare:自建使用SSH协议的Git仓库，通过git remote add命令即可添加</li>
 <li>git push</li>
 <li>git fetch</li>
 <li>git merge</li>
 <li>git pull=(git fetch+ git merge)</li>
 </ul>
+<h3 id="Git更新远程仓库代码到本地"><a href="#Git更新远程仓库代码到本地" class="headerlink" title="Git更新远程仓库代码到本地"></a>Git更新远程仓库代码到本地</h3><blockquote>
+<p>当我们在多台电脑上或者多人共同开发一个项目的时候，远程仓库会不时地被修改，而自己也在不断修改自己的本地仓库，因此仓库的远程版本与本地版本势必会导致不一致</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/sxy370921/p/11734612.html">参考文章</a></p>
+<ol>
+<li>方法一：本地master分支更新至远程主机的master分支</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote -v  &#x2F;&#x2F;查看远程仓库</span><br><span class="line">git fetch origin master:tmp   &#x2F;&#x2F;拉取远程origin的master分支到本地tmp分支</span><br><span class="line">git diff &#x2F;&#x2F;比较本地master分支和tmp分支</span><br><span class="line">git merge temp   &#x2F;&#x2F;合并本地master分支和tmp分支</span><br><span class="line">git branch -d tmp &#x2F;&#x2F;删除临时的tmp分支</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>方法二：拉取远程dev分支与本地dev分支合并</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin dev:dev</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git pull &lt;远程仓库名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</p>
+</blockquote>
+<blockquote>
+<p>git pull &lt;远程仓库名&gt; &lt;远程分支名&gt;     没有本地分支时，默认是当前分支</p>
+</blockquote>
+<blockquote>
+<p>git pull &lt;远程仓库名&gt;      上述命令进一步简化成：当前分支关联的远程分支</p>
+</blockquote>
+<p>上述命令等同于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin dev</span><br><span class="line">git checkout dev</span><br><span class="line">git merge origin&#x2F;dev</span><br></pre></td></tr></table></figure>
+
 <h2 id="Git团队协作"><a href="#Git团队协作" class="headerlink" title="Git团队协作"></a>Git团队协作</h2><blockquote>
 <p>有以下三种常见的团队协作方式</p>
 </blockquote>
@@ -246,10 +278,18 @@
 </blockquote>
 <p><a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></p>
 <p><img src="/2020/03/02/Git%E5%91%BD%E4%BB%A4/GitCopperation3.png" alt="Git并行团队开发"></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blog.csdn.net/qq_25458977/article/details/87875641">https://blog.csdn.net/qq_25458977/article/details/87875641</a></p>
-<p><a href="https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576">廖雪峰博客</a><br><a href="https://github.com/521xueweihan/git-tips">https://github.com/521xueweihan/git-tips</a></p>
-<p><a href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简明指南</a></p>
-<h2 id="图解git"><a href="#图解git" class="headerlink" title="图解git"></a><a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解git</a></h2>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blog.csdn.net/qq_25458977/article/details/87875641">https://blog.csdn.net/qq_25458977/article/details/87875641</a><br><a href="https://www.liaoxuefeng.com/wiki/896043488029600/897271968352576">廖雪峰博客</a><br><a href="https://github.com/521xueweihan/git-tips">https://github.com/521xueweihan/git-tips</a><br><a href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简明指南</a><br><a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解git</a></p>
+<hr>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Git/" rel="tag">Git</a>, <a class="has-link-grey -link" href="/tags/Github/" rel="tag">Github</a>
+                </div>
+            </div>
         </div>
         
         
@@ -382,7 +422,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            7
+                            15
                         </p>
                     </a>
                 </div>
@@ -394,7 +434,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            4
+                            16
                         </p>
                     </a>
                 </div>
@@ -406,7 +446,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            6
+                            27
                         </p>
                     </a>
                 </div>
@@ -487,15 +527,111 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/%E8%AF%AD%E8%A8%80/">
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
             <span class="level-start">
-                <span class="level-item">语言</span>
+                <span class="level-item">基础知识</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+            <span class="level-start">
+                <span class="level-item">大数据</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <span class="level-start">
+                <span class="level-item">数据库</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+            <span class="level-start">
+                <span class="level-item">计算机网络</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">软件工程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/Docker/">
+            <span class="level-start">
+                <span class="level-item">Docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/Git/">
+            <span class="level-start">
+                <span class="level-item">Git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%B7%A5%E5%85%B7/Vim/">
+            <span class="level-start">
+                <span class="level-item">Vim</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">数据结构与算法</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/%E8%AF%AD%E8%A8%80/Markdown/">
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Kickstart/">
+            <span class="level-start">
+                <span class="level-item">Kickstart</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+            <span class="level-start">
+                <span class="level-item">编程语言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/">
+            <span class="level-start">
+                <span class="level-item">Golang</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Markdown/">
             <span class="level-start">
                 <span class="level-item">Markdown</span>
             </span>
@@ -532,7 +668,15 @@
         <a class="is-flex" href="#Git-远程操作">
         <span class="has-mr-6">4</span>
         <span>Git 远程操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#常见命令：">
+        <span class="has-mr-6">4.1</span>
+        <span>常见命令：</span>
         </a></li><li>
+        <a class="is-flex" href="#Git更新远程仓库代码到本地">
+        <span class="has-mr-6">4.2</span>
+        <span>Git更新远程仓库代码到本地</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Git团队协作">
         <span class="has-mr-6">5</span>
         <span>Git团队协作</span>
@@ -540,10 +684,6 @@
         <a class="is-flex" href="#Reference">
         <span class="has-mr-6">6</span>
         <span>Reference</span>
-        </a></li><li>
-        <a class="is-flex" href="#图解git">
-        <span class="has-mr-6">7</span>
-        <span>图解git</span>
         </a></li></ul>
             </div>
         </div>
